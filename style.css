@@ -1,0 +1,12 @@
+#btn-translate {
+    color: rgb(211, 12, 12);
+    margin-top: 1rem;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+    display: block;
+    background-color: yellow;
+    padding: 1rem;
+}
