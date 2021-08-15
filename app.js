@@ -1,12 +1,39 @@
-var btnTranslate = document.querySelector("#btn-translate");
+var textInput = document.querySelector('#text-input');
+var btnTranslate = document.querySelector('#btn-translate');
+var textOutput = document.querySelector('#text-output');
 
-var txtInput = document.querySelector("#txt-input");
-var outputdiv = document.querySelector("#output-div");
-console.log(txtInput)
+// var url = 'https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json'
+var url = "https://api.funtranslations.com/translate/minion.json"
 
-function clickHandler() {
-    console.log("clicked");
-    console.log("input", txtInput.value);
+
+function getTranslateURL(text) {
+    return url + "?" + "text=" + text;
+
 }
 
-btnTranslate.addEventListener("click", clickHandler)
+//display translation in the required div
+function displayTranslation(outputText) {
+    textOutput.innerText = outputText;
+}
+//error hanlding for non-responsive server
+function handleError(error) {
+    console.log("Error Occured " + error);
+}
+//handle click event
+function handleClick() {
+
+    let inputTextValue = textInput.value;
+
+    fetch(getTranslateURL(inputTextValue))
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json);
+
+            displayTranslation(json.contents.translated);
+
+        })
+        .catch(handleError)
+
+}
+
+btnTranslate.addEventListener('click', handleClick);
