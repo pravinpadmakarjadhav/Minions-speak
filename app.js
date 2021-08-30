@@ -1,39 +1,15 @@
-var textInput = document.querySelector('#text-input');
-var btnTranslate = document.querySelector('#btn-translate');
-var textOutput = document.querySelector('#text-output');
+const outputText = document.querySelector("#minion-output");
+const inputText = document.querySelector("#input-text");
+const form = document.querySelector("#minion-form");
+const API_URL = `https://api.funtranslations.com/translate/minion.json?text=`;
 
-// var url = 'https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json'
-var url = "https://api.funtranslations.com/translate/minion.json"
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  outputText.innertext = "";
+  const textContent = inputText.value;
+  inputText.value = "";
 
-
-function getTranslateURL(text) {
-    return url + "?" + "text=" + text;
-
-}
-
-//display translation in the required div
-function displayTranslation(outputText) {
-    textOutput.innerText = outputText;
-}
-//error hanlding for non-responsive server
-function handleError(error) {
-    console.log("Error Occured " + error);
-}
-//handle click event
-function handleClick() {
-
-    let inputTextValue = textInput.value;
-
-    fetch(getTranslateURL(inputTextValue))
-        .then(response => response.json())
-        .then(json => {
-            // console.log(json);
-
-            displayTranslation(json.contents.translated);
-
-        })
-        .catch(handleError)
-
-}
-
-btnTranslate.addEventListener('click', handleClick);
+  fetch(`${API_URL}${textContent}`)
+    .then((response) => response.json())
+    .then((data) => (outputText.innerText = data.contents.translated));
+});

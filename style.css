@@ -1,62 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-:root {
-    --primary-color: #ecdb58;
-    --off-white: #F3F4F6;
-    --dark-gray: #333333;
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
 }
 
 body {
-    max-width: 600px;
-    margin: auto;
-    background-color: white;
-    margin-top: 0px;
-    font-family: 'Righteous', cursive;
-    
+  margin: 0;
+  font-family: "Klee One", cursive;
 }
 
-h1 {
-    text-align: center;
-    background-color: var(--primary-color);
-    width: 100%;
-    margin: 1rem;
-    padding: 1rem;
+textarea,
+button {
+  font-family: inherit;
 }
 
-#text-input {
-    display: block;
-    width: 100%;
-    height: 20vh;
-    margin: 1rem;
-    padding: 1rem;
-    font-family: 'Righteous', cursive;
-    font-size: medium;
-}
-
-#btn-translate {
-    margin: 10px 10px 10px 10px;
-    height: 50px;
-    max-width: 90px;
-    font-family: 'Righteous', cursive;
-    margin: 1rem;
-    padding: 1rem;
-    border: none;
-    background-color: var(--primary-color);
-}
-
-#text-output {
-    display: block;
-    width: 100%;
-    height: 20vh;
-    margin: 1rem;
-    padding: 1rem;
-    border: 0.025rem solid var(--dark-gray);
-    font-family: 'Righteous', cursive;
-}
-
+header,
+button,
 footer {
-    width: 100%;
-    text-align: center;
-    margin: 1rem;
-    padding: 1rem;
-    background-color: var(--primary-color);
+  background-color: #f2c94c;
+  text-align: center;
+  padding: 0.625rem;
 }
+
+h1,
+h2 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+main {
+  padding: 0 1rem;
+}
+
+main section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#minion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group button[type="submit"] {
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: max-content;
+  cursor: pointer;
+}
+
+#minion-output {
+  border: 1px solid hsla(0, 0%, 0%, 0.2);
+  overflow: auto;
+  padding: 0.625rem;
+}
+
+@media screen and (min-width: 768px) {
+  /* These styles will apply to all the devices whose minimum width is 768px or above */
+
+  main {
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+  }}
