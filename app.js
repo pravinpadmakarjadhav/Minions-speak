@@ -1,36 +1,39 @@
-var btnTranslate=document.querySelector("#btn-translate");
-var txtInput=document.querySelector("#txt-input");
-var outputDiv =document.querySelector("#output");
+var inputText = document.querySelector("#input-text");
+var btnTranslate = document.querySelector("#btn-translate");
+var btnReset = document.querySelector("#btn-reset");
+var outputDiv = document.querySelector("#output-div");
 
-var serverURL = "https://api.funtranslations.com/translate/minion.json"
+var flipContainer = document.querySelector(".flip-container");
 
-function getTranslationURL(text){
+var serverURL = "https://api.funtranslations.com/translate/minion.json?text=";
 
-  return serverURL + "?" +"text=" + text
+function translatetext() {
+  flipContainer.classList.add("flip-action");
+  btnTranslate.classList.add("hide");
+  btnReset.classList.remove("hide");
+  fetch(serverURL + inputText.value)
+    .then((res) => res.json())
+    .then((json) => {
+      if (inputText.value === "") {
+        outputDiv.innerHTML = "Please enter some text!";
+        outputDiv.classList.add("font-red");
+      } else {
+        outputDiv.innerHTML = json.contents.translated;
+      }
+    })
+    .catch((err) => {
+      outputDiv.innerHTML = `Some Error Occured. Please come back later.`;
+      outputDiv.classList.add("font-red");
+    });
 }
 
-function errorHandler(error){
-
-  console.log("error occurred",error);
-  alert("something wrong with server,try later")
+function resetFn() {
+  flipContainer.classList.remove("flip-action");
+  btnTranslate.classList.remove("hide");
+  btnReset.classList.add("hide");
+  outputDiv.classList.remove("font-red");
+  inputText.value = "";
 }
 
-
-
-function clickHandler(){
- 
- var inputText = txtInput.value; //taking input
-
- //calling server for processing
-fetch (getTranslationURL(inputText))
-.then(response=>response.json())
-.then(json=>{
-  var translatedText=json.contents.translated;
-  outputDiv.innerText = translatedText;
-})
-
-.catch(errorHandler)
-
-
-};
-btnTranslate.addEventListener("click",clickHandler)
+btnTranslate.addEventListener("click", translatetext);
+btnReset.addEventListener("click", resetFn);
