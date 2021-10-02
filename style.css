@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 :root {
   --primary-color: #fde455;
-  --off-white: #e5e7eb;
-  --dark-gray: #231f20;
+  --off-white: #d7dde9;
+  --dark-blue: #175fea;
 }
 
 body {
@@ -34,7 +34,7 @@ textarea {
 }
 .placeholder {
   font-family: "Poppins", sans-serif;
-  color: var(--dark-gray);
+  color: var(--dark-blue);
 }
 
 img {
