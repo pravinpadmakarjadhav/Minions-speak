@@ -1,39 +1,27 @@
-var inputText = document.querySelector("#input-text");
 var btnTranslate = document.querySelector("#btn-translate");
-var btnReset = document.querySelector("#btn-reset");
-var outputDiv = document.querySelector("#output-div");
+var txtInput = document.querySelector("#txt-input");
+var outputDiv = document.querySelector("#output");
 
-var flipContainer = document.querySelector(".flip-container");
+var serverURL = "https://api.funtranslations.com/translate/minion.json";
 
-var serverURL = "https://api.funtranslations.com/translate/minion.json?text=";
+function getTranslationURL(text) {
+  return serverURL + "?" + "text=" + text;
+}
 
-function translatetext() {
-  flipContainer.classList.add("flip-action");
-  btnTranslate.classList.add("hide");
-  btnReset.classList.remove("hide");
-  fetch(serverURL + inputText.value)
-    .then((res) => res.json())
+function errorHandler(error) {
+  alert("error occurred", error);
+}
+
+function clickHandler() {
+  var inputText = txtInput.value;
+
+  fetch(getTranslationURL(inputText))
+    .then((response) => response.json())
     .then((json) => {
-      if (inputText.value === "") {
-        outputDiv.innerHTML = "Please enter some text!";
-        outputDiv.classList.add("font-red");
-      } else {
-        outputDiv.innerHTML = json.contents.translated;
-      }
+      var translatedText = json.contents.translated;
+      outputDiv.innerText = translatedText;
     })
-    .catch((err) => {
-      outputDiv.innerHTML = `Some Error Occured. Please come back later.`;
-      outputDiv.classList.add("font-red");
-    });
+    .catch(errorHandler);
 }
 
-function resetFn() {
-  flipContainer.classList.remove("flip-action");
-  btnTranslate.classList.remove("hide");
-  btnReset.classList.add("hide");
-  outputDiv.classList.remove("font-red");
-  inputText.value = "";
-}
-
-btnTranslate.addEventListener("click", translatetext);
-btnReset.addEventListener("click", resetFn);
+btnTranslate.addEventListener("click", clickHandler);

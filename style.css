@@ -1,143 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+:root {
+  --primary-color: #ffe342;
+  --off-white: #e5e7eb;
+  --dark-gray: #231f20;
+}
 
-*{
+body {
+  font-family: "Poppins", sans-serif;
   margin: 0;
-  padding: 0;
 }
+#header {
+  border-bottom-left-radius: 1rem;
 
-:root{
-  /* --yellow: #FCE029; */
-  /* --yellow: #FCDD4B; */
-  --yellow: #FEF08A;
-  --yellow-dark: #FACC15;
-  --blue: #4285F3;
-  --black: #231F20;
-  --coolGray: #1E3A8A;
-  --coolGray-light: #1F2937;
-}
-
-body{
-  font-family: 'IBM Plex Sans', sans-serif;
-  color: var(--coolGray);
-  margin: 0;
-  background-image: url(images/minion-bg.jpg);
-  overscroll-behavior: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #FDE34D;
-}
-
-@media (max-width: 600px){
-  body{
-    background-size: auto;
-  }
-}
-
-h1{
-  font-size: 3rem;
-  color: var(--coolGray);
-  font-weight: bold;
-}
-
-h3{
-  color: var(--coolGray);
-  margin-top: 1rem;
-}
-
-.container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.input-text{
-  width: calc(400px - 2rem);
-  height: 80%;
-  font-size: 1.5rem;
-  font-family: 'IBM Plex Sans', sans-serif;
-  line-height: 1.8rem;
-  max-width: 70vw;
-  display: block;
-  resize: none;
-  background-color: transparent;
-  border: none;
-  margin: 2rem auto;
-}
-.input-text:focus{
-  outline: none;
-}
-
-#output-div{
-  margin: 2rem auto;
-  font-size: 1.5rem;
-  line-height: 1.8rem;
-}
-
-.flip-container {
-  width: 400px;
-  height: 400px;
-  max-width: 85vw;
-  perspective: 1000px;
-  margin: 3rem auto;
-}
-
-.flip-container-inner {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  max-width: 85vw;
-  margin: auto;
   text-align: center;
-  transition: transform 0.5s;
-  transform-style: preserve-3d;
-  border-radius: 1rem;
-  box-shadow: 1px 1px 40px rgba(0,0,0,0.1);
+  font-size: 2rem;
+  padding: 1rem;
+  color: black;
+  background-color: var(--primary-color);
+  margin: 0;
 }
 
-.flip-action .flip-container-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-container-front, .flip-container-back {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  max-width: 85vw;
-  margin: auto;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-  background-color: rgba(255,255,255,0.95);
-}
-
-.flip-container-back {
-  transform: rotateY(180deg);
-}
-
-.button{
-  padding: 1rem 2rem;
-  background-color: var(--coolGray);
-  color: var(--yellow-dark);
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  border: none;
-  font-size: 1.1rem;
+textarea {
+  border: 1px solid black;
+  height: 10vh;
+  width: 100%;
+  padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-  transition: display 1s ease;
+  box-sizing: border-box;
+  display: block;
+  min-height: 20vh;
+  margin-top: 2rem;
+  font-size: large;
+}
+.placeholder {
+  font-family: "Poppins", sans-serif;
+  color: var(--dark-gray);
 }
 
-.hide{
-  display: none;
+img {
+  max-width: 150px;
+  display: block;
+  margin: auto;
+}
+#output {
+  border: 1px solid black;
+  height: 10vh;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: block;
+  min-height: 20vh;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: large;
 }
 
-.font-red{
-  color: red;
+button {
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  border: none;
+  color: black;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+.container {
+  /* padding-left: 1rem;
+  padding-right: 1rem; */
+  text-align: center;
 }
 
+.container-center {
+  padding: 0rem 1rem;
+  max-width: 800px;
+  margin: auto;
+}
 
+footer {
+  background-color: var(--primary-color);
+  padding: 2rem 0rem;
+  text-align: center;
+  color: black;
+  border-top-right-radius: 1rem;
+  margin: 0;
+}
+.footer .footer-header {
+  font-weight: bold;
+  font-size: large;
+}
+.footer .link {
+  color: white;
+}
+
+.footer ul {
+  padding-inline-start: 0px;
+}
+.footer__icon {
+  font-size: 1.5rem;
+  color: var(--light-color);
+  margin: 0 1rem;
+}
+.footer__icon:hover {
+  color: white;
+}
+h3 {
+  font-size: 0.7rem;
+  padding: 1rem;
+}
